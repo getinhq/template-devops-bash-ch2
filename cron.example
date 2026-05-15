@@ -1,0 +1,2 @@
+# Example: run daily at 02:00
+# 0 2 * * * /path/to/rotate_logs.sh /var/log/myapp.log 10485760

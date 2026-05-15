@@ -5,9 +5,13 @@ on:
   push:
     branches: [main]
 jobs:
-  shellcheck:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - run: sudo apt-get update && sudo apt-get install -y shellcheck
       - run: shellcheck rotate_logs.sh
+      - name: Smoke test rotation
+        run: |
+          chmod +x rotate_logs.sh
+          ./rotate_logs.sh sample/app.log 50
